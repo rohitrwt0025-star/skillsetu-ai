@@ -1,0 +1,6 @@
+{
+  "name": "SkillSetu AI",
+  "description": "Career exploration, eligibility checking, resume building, interview practice, and application tracking for diploma students and fresh graduates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

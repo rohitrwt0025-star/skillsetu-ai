@@ -1,0 +1,347 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Student candidate profile details voluntarily provided for career matching and resume drafting",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID matching the authenticated student",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Candidate full name",
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email address",
+          "maxLength": 200
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact telephone number",
+          "maxLength": 30
+        },
+        "qualification": {
+          "type": "string",
+          "description": "Degree type: Diploma, B.Tech/BE, or ITI",
+          "enum": ["Diploma", "B.Tech/BE", "ITI"]
+        },
+        "branch": {
+          "type": "string",
+          "description": "Engineering branch or discipline",
+          "maxLength": 80
+        },
+        "institution": {
+          "type": "string",
+          "description": "Polytechnic or university name",
+          "maxLength": 200
+        },
+        "boardOrUniversity": {
+          "type": "string",
+          "description": "State technical education board or examining body",
+          "maxLength": 200
+        },
+        "percentageOrCgpa": {
+          "type": "number",
+          "description": "Aggregate marks or CGPA"
+        },
+        "graduationYear": {
+          "type": "number",
+          "description": "Graduation cohort year"
+        },
+        "activeBacklogs": {
+          "type": "number",
+          "description": "Count of uncleared backlogs"
+        },
+        "category": {
+          "type": "string",
+          "description": "Reservation category for statutory relaxation checks",
+          "enum": ["General", "OBC", "SC", "ST", "EWS"]
+        },
+        "location": {
+          "type": "string",
+          "description": "Current city or state",
+          "maxLength": 120
+        },
+        "careerGoals": {
+          "type": "string",
+          "description": "Brief career direction or placement aspiration",
+          "maxLength": 1000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["userId", "name", "email", "qualification", "branch"]
+    },
+    "SavedOpportunity": {
+      "title": "SavedOpportunity",
+      "description": "Bookmark reference for an apprenticeship or job opening",
+      "type": "object",
+      "properties": {
+        "opportunityId": {
+          "type": "string",
+          "description": "Unique identifier of the opportunity",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner student UID",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Job title or apprenticeship role",
+          "maxLength": 200
+        },
+        "organization": {
+          "type": "string",
+          "description": "Hiring company, PSU, or institution",
+          "maxLength": 200
+        },
+        "location": {
+          "type": "string",
+          "description": "Location description",
+          "maxLength": 200
+        },
+        "type": {
+          "type": "string",
+          "description": "Opportunity category",
+          "maxLength": 100
+        },
+        "deadline": {
+          "type": "string",
+          "description": "Application deadline string",
+          "maxLength": 50
+        },
+        "stipendOrSalary": {
+          "type": "string",
+          "description": "Stipend or remuneration details",
+          "maxLength": 150
+        },
+        "savedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when bookmarked"
+        }
+      },
+      "required": ["opportunityId", "userId", "role", "organization"]
+    },
+    "ApplicationEntry": {
+      "title": "ApplicationEntry",
+      "description": "Individual application tracker entry for the authenticated student",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Application record unique ID",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner student UID",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Applied position title",
+          "maxLength": 200
+        },
+        "organization": {
+          "type": "string",
+          "description": "Target company or PSU",
+          "maxLength": 200
+        },
+        "location": {
+          "type": "string",
+          "description": "Workplace location",
+          "maxLength": 200
+        },
+        "type": {
+          "type": "string",
+          "description": "Opportunity category",
+          "maxLength": 100
+        },
+        "appliedDate": {
+          "type": "string",
+          "description": "Date application was submitted (YYYY-MM-DD)",
+          "maxLength": 30
+        },
+        "deadline": {
+          "type": "string",
+          "description": "Next cutoff or written test date (YYYY-MM-DD)",
+          "maxLength": 30
+        },
+        "status": {
+          "type": "string",
+          "description": "Pipeline status",
+          "enum": ["Interested", "Applied", "Test/Interview", "Selected", "Not Selected"]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Personal reminders or syllabus notes",
+          "maxLength": 2000
+        },
+        "applicationLink": {
+          "type": "string",
+          "description": "Application URL",
+          "maxLength": 500
+        },
+        "expectedStipend": {
+          "type": "string",
+          "description": "Expected stipend or salary",
+          "maxLength": 100
+        },
+        "referenceNumber": {
+          "type": "string",
+          "description": "Application enrollment ID or reference code",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Created timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Updated timestamp"
+        }
+      },
+      "required": ["id", "userId", "role", "organization", "status"]
+    },
+    "ResumeDocument": {
+      "title": "ResumeDocument",
+      "description": "Candidate ATS resume draft and formatted credentials",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner student UID",
+          "maxLength": 128
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Name for resume header",
+          "maxLength": 120
+        },
+        "summary": {
+          "type": "string",
+          "description": "Career summary and technical objective",
+          "maxLength": 2000
+        },
+        "dataJson": {
+          "type": "string",
+          "description": "Serialized JSON representation of resume sections",
+          "maxLength": 100000
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last updated timestamp"
+        }
+      },
+      "required": ["userId", "fullName", "dataJson"]
+    },
+    "InterviewProgress": {
+      "title": "InterviewProgress",
+      "description": "Candidate preparation status for a specific interview question",
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "description": "Identifier of the interview question",
+          "maxLength": 128
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner student UID",
+          "maxLength": 128
+        },
+        "isMastered": {
+          "type": "boolean",
+          "description": "Whether candidate marked this mastered"
+        },
+        "isBookmarked": {
+          "type": "boolean",
+          "description": "Whether candidate bookmarked this question"
+        },
+        "practiceAnswer": {
+          "type": "string",
+          "description": "Draft answer attempted by candidate",
+          "maxLength": 4000
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last revised timestamp"
+        }
+      },
+      "required": ["questionId", "userId"]
+    },
+    "UserPreference": {
+      "title": "UserPreference",
+      "description": "Student platform display preferences and settings",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner student UID",
+          "maxLength": 128
+        },
+        "defaultBranch": {
+          "type": "string",
+          "description": "Default branch for opportunity filters",
+          "maxLength": 80
+        },
+        "cloudSyncEnabled": {
+          "type": "boolean",
+          "description": "Whether cloud sync is active"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modified timestamp"
+        }
+      },
+      "required": ["userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Student candidate profile voluntary details"
+    },
+    "/users/{userId}/savedOpportunities/{oppId}": {
+      "schema": { "$ref": "#/entities/SavedOpportunity" },
+      "description": "Saved opportunity bookmarks per user"
+    },
+    "/users/{userId}/applications/{appId}": {
+      "schema": { "$ref": "#/entities/ApplicationEntry" },
+      "description": "Career pipeline applications per user"
+    },
+    "/users/{userId}/resumes/{resumeId}": {
+      "schema": { "$ref": "#/entities/ResumeDocument" },
+      "description": "ATS formatted resume draft documents"
+    },
+    "/users/{userId}/interviewProgress/{questionId}": {
+      "schema": { "$ref": "#/entities/InterviewProgress" },
+      "description": "Candidate interview preparation records"
+    },
+    "/users/{userId}/preferences/{prefId}": {
+      "schema": { "$ref": "#/entities/UserPreference" },
+      "description": "User configuration and preferences"
+    }
+  }
+}
